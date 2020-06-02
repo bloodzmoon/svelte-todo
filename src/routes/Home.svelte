@@ -13,7 +13,7 @@
     position: absolute;
     z-index: 1;
     opacity: 0.5;
-    background: url("/images/svelte.svg") no-repeat center center;
+    background: url("./images/svelte.svg") no-repeat center center;
   }
 
   .content {

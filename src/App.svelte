@@ -1,7 +1,9 @@
 <script>
   import Router, { link } from "svelte-spa-router";
   import active from "svelte-spa-router/active";
+  import { todos } from "./store.js";
   import { routes } from "./routes";
+  todos.useLocalStorage();
 </script>
 
 <style>

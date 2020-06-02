@@ -2,7 +2,7 @@ import { writable } from "svelte/store";
 import { v4 as uuid } from "uuid";
 
 export const createTodos = () => {
-  const { subscribe, update } = writable([]);
+  const { subscribe, set, update } = writable([]);
   return {
     subscribe,
     addTodo: (newTodo) =>
@@ -14,6 +14,14 @@ export const createTodos = () => {
           todo.id === id ? { ...todo, done: !todo.done } : todo
         )
       ),
+    useLocalStorage: () => {
+      const data = localStorage.getItem("svelte-todo");
+      if (data) set(JSON.parse(data));
+
+      subscribe((value) => {
+        localStorage.setItem("svelte-todo", JSON.stringify(value));
+      });
+    },
   };
 };
 
